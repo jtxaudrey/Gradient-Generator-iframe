@@ -418,3 +418,29 @@ const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("embed") === "true") {
   document.body.classList.add("embed-mode");
 }
+function copyCustomURL() {
+  const baseURL = "https://jtxaudrey.github.io/Gradient-Generator/";
+
+  const params = new URLSearchParams();
+  params.set("blur", blurAmount);
+  params.set("radius", circleRadius);
+  params.set("shadow", shadowBlur);
+  params.set("count", numPoints);
+  params.set("smoothness", smoothnessFactor);
+  params.set("speed", speedFactor);
+  params.set("colors", colors.map(c => c.replace('#', '')).join(','));
+
+  const hueVal = parseInt(document.getElementById("hueSlider").value);
+  const brightnessVal = parseInt(document.getElementById("brightnessSlider").value);
+  const saturationVal = parseInt(document.getElementById("saturationSlider").value);
+  params.set("hue", hueVal);
+  params.set("brightness", brightnessVal);
+  params.set("saturation", saturationVal);
+  params.set("embed", "true");
+
+  const fullURL = `${baseURL}?${params.toString()}`;
+  const input = document.getElementById("customURL");
+  input.value = fullURL;
+  input.select();
+  document.execCommand("copy");
+}
