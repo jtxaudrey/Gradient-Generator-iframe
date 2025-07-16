@@ -7,16 +7,22 @@ function loadSettingsFromURL() {
   if (params.has("count")) numPoints = parseInt(params.get("count"));
   if (params.has("smoothness")) smoothnessFactor = parseFloat(params.get("smoothness"));
   if (params.has("speed")) speedFactor = parseFloat(params.get("speed"));
+
+  // Load colors from URL
   if (params.has("colors")) {
     colors = params.get("colors").split(',').map(hex => `#${hex}`);
   }
 
-  // Also apply UI sliders if present
+  // Set slider UI values
   if (params.has("hue")) document.getElementById("hueSlider").value = params.get("hue");
   if (params.has("brightness")) document.getElementById("brightnessSlider").value = params.get("brightness");
   if (params.has("saturation")) document.getElementById("saturationSlider").value = params.get("saturation");
 
+  // Apply hue/brightness/saturation to current colors (not defaults)
   applyAdjustments();
+
+  // Update the UI with the modified color palette
+  updateColorUI();
 }
 
 
