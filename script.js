@@ -263,7 +263,7 @@ function applyAdjustments() {
   const brightness = parseInt(brightnessSlider.value);
   const saturation = parseInt(saturationSlider.value);
 
-  colors = defaultSettings.colors.map(hex => {
+  colors = colors.map(hex => {
     let { r, g, b } = hexToRgb(hex);
 
     // Convert to HSL
