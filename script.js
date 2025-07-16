@@ -76,7 +76,6 @@ function initPoints(count) {
     });
   }
 }
-initPoints(numPoints);
 
 // ========== Mouse Tracking ==========
 document.addEventListener("mousemove", (e) => {
@@ -424,7 +423,7 @@ const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("embed") === "true") {
   document.body.classList.add("embed-mode");
 }
-function copyCustomURL() {
+function copyCustomURL() { 
   const baseURL = "https://jtxaudrey.github.io/Gradient-Generator/";
 
   const params = new URLSearchParams();
