@@ -444,8 +444,12 @@ function copyCustomURL() {
   params.set("embed", "true");
 
   const fullURL = `${baseURL}?${params.toString()}`;
-  const input = document.getElementById("customURL");
-  input.value = fullURL;
-  input.select();
-  document.execCommand("copy");
+  
+  // NEW: Modern clipboard copy
+  navigator.clipboard.writeText(fullURL).then(() => {
+    console.log("Copied to clipboard:", fullURL);
+  }).catch(err => {
+    console.error("Failed to copy:", err);
+  });
+
 }
